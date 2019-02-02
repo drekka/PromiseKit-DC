@@ -1,2 +1,5 @@
 # PromiseKit-DC
-Extension to PromiseKit that adds some DispatchQueue methods
+
+Extension to PromiseKit that adds some DispatchQueue methods.
+
+

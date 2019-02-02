@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6CE2F1C6220488500097D83F /* PromiseKit_DC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE2F1BC220488500097D83F /* PromiseKit_DC.framework */; };
-		6CE2F1CB220488500097D83F /* PromiseKit_DCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2F1CA220488500097D83F /* PromiseKit_DCTests.swift */; };
-		6CE2F1CD220488500097D83F /* PromiseKit_DC.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CE2F1BF220488500097D83F /* PromiseKit_DC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CE2F1C6220488500097D83F /* PromiseKitDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE2F1BC220488500097D83F /* PromiseKitDC.framework */; };
+		6CE2F1CB220488500097D83F /* PromiseKit+DCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2F1CA220488500097D83F /* PromiseKit+DCTests.swift */; };
+		6CE2F1CD220488500097D83F /* PromiseKit+DC.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CE2F1BF220488500097D83F /* PromiseKit+DC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CE2F1D822048E920097D83F /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 6CE2F1D722048E920097D83F /* Cartfile.private */; };
 		6CE2F1DB220490190097D83F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE2F1DA220490190097D83F /* PromiseKit.framework */; };
 		6CE2F1DD220490390097D83F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE2F1DC220490390097D83F /* Nimble.framework */; };
-		6CE2F1E0220491880097D83F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2F1DF220491880097D83F /* File.swift */; };
+		6CE2F1E0220491880097D83F /* DIspatchQueue+PromiseKit+DC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2F1DF220491880097D83F /* DIspatchQueue+PromiseKit+DC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +27,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6CE2F1BC220488500097D83F /* PromiseKit_DC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKit_DC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CE2F1BF220488500097D83F /* PromiseKit_DC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromiseKit_DC.h; sourceTree = "<group>"; };
+		6CE2F1BC220488500097D83F /* PromiseKitDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKitDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CE2F1BF220488500097D83F /* PromiseKit+DC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PromiseKit+DC.h"; sourceTree = "<group>"; };
 		6CE2F1C0220488500097D83F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CE2F1C5220488500097D83F /* PromiseKit+DCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PromiseKit+DCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CE2F1CA220488500097D83F /* PromiseKit_DCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseKit_DCTests.swift; sourceTree = "<group>"; };
+		6CE2F1CA220488500097D83F /* PromiseKit+DCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+DCTests.swift"; sourceTree = "<group>"; };
 		6CE2F1CC220488500097D83F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CE2F1D622048E5A0097D83F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		6CE2F1D722048E920097D83F /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		6CE2F1DA220490190097D83F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		6CE2F1DC220490390097D83F /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		6CE2F1DF220491880097D83F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		6CE2F1DF220491880097D83F /* DIspatchQueue+PromiseKit+DC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIspatchQueue+PromiseKit+DC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CE2F1DD220490390097D83F /* Nimble.framework in Frameworks */,
-				6CE2F1C6220488500097D83F /* PromiseKit_DC.framework in Frameworks */,
+				6CE2F1C6220488500097D83F /* PromiseKitDC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 		6CE2F1BD220488500097D83F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6CE2F1BC220488500097D83F /* PromiseKit_DC.framework */,
+				6CE2F1BC220488500097D83F /* PromiseKitDC.framework */,
 				6CE2F1C5220488500097D83F /* PromiseKit+DCTests.xctest */,
 			);
 			name = Products;
@@ -85,9 +85,9 @@
 		6CE2F1BE220488500097D83F /* PromiseKit+DC */ = {
 			isa = PBXGroup;
 			children = (
-				6CE2F1BF220488500097D83F /* PromiseKit_DC.h */,
+				6CE2F1BF220488500097D83F /* PromiseKit+DC.h */,
 				6CE2F1C0220488500097D83F /* Info.plist */,
-				6CE2F1DF220491880097D83F /* File.swift */,
+				6CE2F1DF220491880097D83F /* DIspatchQueue+PromiseKit+DC.swift */,
 			);
 			path = "PromiseKit+DC";
 			sourceTree = "<group>";
@@ -95,7 +95,7 @@
 		6CE2F1C9220488500097D83F /* PromiseKit+DCTests */ = {
 			isa = PBXGroup;
 			children = (
-				6CE2F1CA220488500097D83F /* PromiseKit_DCTests.swift */,
+				6CE2F1CA220488500097D83F /* PromiseKit+DCTests.swift */,
 				6CE2F1CC220488500097D83F /* Info.plist */,
 			);
 			path = "PromiseKit+DCTests";
@@ -117,7 +117,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CE2F1CD220488500097D83F /* PromiseKit_DC.h in Headers */,
+				6CE2F1CD220488500097D83F /* PromiseKit+DC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 			);
 			name = "PromiseKit+DC";
 			productName = "PromiseKit+DC";
-			productReference = 6CE2F1BC220488500097D83F /* PromiseKit_DC.framework */;
+			productReference = 6CE2F1BC220488500097D83F /* PromiseKitDC.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6CE2F1C4220488500097D83F /* PromiseKit+DCTests */ = {
@@ -243,7 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CE2F1E0220491880097D83F /* File.swift in Sources */,
+				6CE2F1E0220491880097D83F /* DIspatchQueue+PromiseKit+DC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CE2F1CB220488500097D83F /* PromiseKit_DCTests.swift in Sources */,
+				6CE2F1CB220488500097D83F /* PromiseKit+DCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,10 +270,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -291,6 +293,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -304,7 +307,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -326,6 +329,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 12.1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -338,10 +342,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -359,6 +365,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -372,7 +379,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -387,6 +394,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 12.1;
 				VALIDATE_PRODUCT = YES;
@@ -419,10 +427,9 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "au.com.derekclarkson.PromiseKit-DC";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = PromiseKitDC;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -450,9 +457,8 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "au.com.derekclarkson.PromiseKit-DC";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = PromiseKitDC;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
