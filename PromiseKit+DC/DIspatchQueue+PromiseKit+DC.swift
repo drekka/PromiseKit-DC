@@ -24,10 +24,33 @@ public extension DispatchQueue {
     /// - Parameter body: The closure that resolves this promise.
     /// - Returns: A new `Guarantee` resolved by the result of the provided closure.
 
-    final func asyncGuarantee<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], execute body: @escaping () -> T) -> Guarantee<T> {
+    @discardableResult final func asyncGuarantee<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], execute body: @escaping () -> T) -> Guarantee<T> {
         let pending = Guarantee<T>.pending()
         async(group: group, qos: qos, flags: flags) {
             pending.resolve(body())
+        }
+        return pending.guarantee
+    }
+
+    /// Asynchronously executes the provided closure on a dispatch queue.
+    ///
+    /// This differs slightly from the `DispatchQueue.async(...)` in PromiseKit in that the function depends on the
+    /// closure signature to determine the correct method to execute rather than passing an additional argument.
+    ///
+    ///     DispatchQueue.global().async { () -> Guarantee<Int> in
+    ///         return Guarantee(value: md5(input))
+    ///     }.done { md5 in
+    ///         //…
+    ///     }
+    ///
+    /// - Parameter body: The closure that resolves this promise.
+    /// - Returns: A new `Guarantee` resolved by the result of the provided closure.
+    @discardableResult final func asyncGuarantee<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], execute body: @escaping () -> Guarantee<T>) -> Guarantee<T> {
+        let pending = Guarantee<T>.pending()
+        async(group: group, qos: qos, flags: flags) {
+            body().done { result in
+                pending.resolve(result)
+            }
         }
         return pending.guarantee
     }
@@ -49,7 +72,7 @@ public extension DispatchQueue {
     /// - Parameter body: The closure that resolves this promise.
     /// - Returns: A new `Guarantee` resolved using the seal passed to the provided closure.
     
-    final func asyncGuarantee<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], resolver body: @escaping (@escaping(T) -> Void) -> Void) -> Guarantee<T> {
+    @discardableResult final func asyncGuarantee<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], resolver body: @escaping (@escaping(T) -> Void) -> Void) -> Guarantee<T> {
         return Guarantee<T> { seal in
             async(group: group, qos: qos, flags: flags) {
                 body(seal)
@@ -71,13 +94,39 @@ public extension DispatchQueue {
     /// - Parameter body: The closure that resolves this promise.
     /// - Returns: A new `Promise` resolved by the result of the provided closure.
 
-    final func asyncPromise<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], execute body: @escaping () throws -> T) -> Promise<T> {
+    @discardableResult final func asyncPromise<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], execute body: @escaping () throws -> T) -> Promise<T> {
         let pending = Promise<T>.pending()
         async(group: group, qos: qos, flags: flags) {
             do {
                 pending.resolver.fulfill(try body())
             } catch {
                 pending.resolver.reject(error)
+            }
+        }
+        return pending.promise
+    }
+
+    /// Asynchronously executes the provided closure on a dispatch queue.
+    ///
+    /// This differs slightly from the `DispatchQueue.async(...)` in PromiseKit in that the function depends on the
+    /// closure signature to determine the correct method to execute rather than passing an additional argument.
+    ///
+    ///     DispatchQueue.global().async { () -> Promise<Int> in
+    ///         return Promise.value(md5(input))
+    ///     }.done { md5 in
+    ///         //…
+    ///     }
+    ///
+    /// - Parameter body: The closure that resolves this promise.
+    /// - Returns: A new `Promise` resolved by the result of the provided closure.
+
+    @discardableResult final func asyncPromise<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], execute body: @escaping () -> Promise<T>) -> Promise<T> {
+        let pending = Promise<T>.pending()
+        async(group: group, qos: qos, flags: flags) {
+            body().done { result in
+                pending.resolver.fulfill(result)
+                }.catch { error in
+                    pending.resolver.reject(error)
             }
         }
         return pending.promise
@@ -102,7 +151,7 @@ public extension DispatchQueue {
     /// - Parameter body: The closure that resolves this promise.
     /// - Returns: A new promise resolved using the seal passed to the provided closure.
 
-    final func asyncPromise<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], resolver body: @escaping (Resolver<T>) -> Void) -> Promise<T> {
+    @discardableResult final func asyncPromise<T>(group: DispatchGroup? = nil, qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = [], resolver body: @escaping (Resolver<T>) -> Void) -> Promise<T> {
         let pending = Promise<T>.pending()
         async(group: group, qos: qos, flags: flags) {
             body(pending.resolver)

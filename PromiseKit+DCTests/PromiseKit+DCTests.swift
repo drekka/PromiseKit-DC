@@ -22,8 +22,8 @@ class PromiseKitTests: XCTestCase {
 
     func testPromiseKitAsyncGuarantee() {
         var result: Int = 0
-        _ = DispatchQueue.main.async(.promise) {
-                return 5
+        DispatchQueue.main.async(.promise) {
+            return 5
             }.done { value in
                 result = value
         }
@@ -32,7 +32,7 @@ class PromiseKitTests: XCTestCase {
 
     func testPromiseKitAsyncPromise() {
         var result: Int = 0
-        _ = DispatchQueue.main.async(.promise) {
+        DispatchQueue.main.async(.promise) {
             return 5
             }.done { value in
                 result = value
@@ -43,14 +43,16 @@ class PromiseKitTests: XCTestCase {
     }
 }
 
-// MARK: - DC Etensions
+// MARK: - DC Extensions
 
 // Just to confirm we've not stuffed things up.
 class PromiseKitDCTests: XCTestCase {
 
-    func testPromiseKitDCAsyncGuarantee() {
+    // MARK: - Guarantees
+
+    func testAsyncGuarantee() {
         var result: Int = 0
-        _ = DispatchQueue.main.asyncGuarantee {
+        DispatchQueue.main.asyncGuarantee {
             return 5
             }.done { value in
                 result = value
@@ -58,9 +60,31 @@ class PromiseKitDCTests: XCTestCase {
         expect(result).toEventually(equal(5))
     }
 
-    func testPromiseKitDCAsyncPromise() {
+    func testAsyncGuaranteeGuarantee() {
         var result: Int = 0
-        _ = DispatchQueue.main.asyncPromise {
+        DispatchQueue.main.asyncGuarantee {
+            return Guarantee.value(5)
+            }.done { value in
+                result = value
+        }
+        expect(result).toEventually(equal(5))
+    }
+
+    func testAsyncSealableGuarantee() {
+        var result: Int = 0
+        DispatchQueue.main.asyncGuarantee { seal in
+            seal(5)
+            }.done { value in
+                result = value
+        }
+        expect(result).toEventually(equal(5))
+    }
+
+    // MARK: - Promises
+
+    func testAsyncPromise() {
+        var result: Int = 0
+        DispatchQueue.main.asyncPromise {
             return 5
             }.done { value in
                 result = value
@@ -70,31 +94,45 @@ class PromiseKitDCTests: XCTestCase {
         expect(result).toEventually(equal(5))
     }
 
-    func testPromiseKitDCAsyncPromiseCatchesError() {
+    func testAsyncPromisePromise() {
+        var result: Int = 0
+        DispatchQueue.main.asyncPromise {
+            return Promise.value(5)
+            }.done { value in
+                result = value
+            }.catch { error in
+                XCTFail("\(error)")
+        }
+        expect(result).toEventually(equal(5))
+    }
+
+    func testAsyncPromisePromiseWithError() {
         var errorThrown = false
-        _ = DispatchQueue.main.asyncPromise {
-            throw TestError.anError
+        DispatchQueue.main.asyncPromise {
+            return Promise<Int>(error: TestError.anError)
             }.done { value in
                 XCTFail("Expected to fail")
-            }.catch { error in
+            }.catch { _ in
                 errorThrown = true
         }
         expect(errorThrown).toEventually(beTrue())
     }
 
-    func testPromiseKitDCAsyncSealableGuarantee() {
-        var result: Int = 0
-        _ = DispatchQueue.main.asyncGuarantee { seal in
-            seal(5)
+    func testAsyncPromiseCatchesError() {
+        var errorThrown = false
+        DispatchQueue.main.asyncPromise {
+            throw TestError.anError
             }.done { value in
-                result = value
+                XCTFail("Expected to fail")
+            }.catch { _ in
+                errorThrown = true
         }
-        expect(result).toEventually(equal(5))
+        expect(errorThrown).toEventually(beTrue())
     }
 
-    func testPromiseKitDCAsyncSealablePromise() {
+    func testAsyncSealablePromise() {
         var result: Int = 0
-        _ = DispatchQueue.main.asyncPromise { seal in
+        DispatchQueue.main.asyncPromise { seal in
             seal.fulfill(5)
             }.done { value in
                 result = value
@@ -104,13 +142,13 @@ class PromiseKitDCTests: XCTestCase {
         expect(result).toEventually(equal(5))
     }
 
-    func testPromiseKitDCAsyncSealablePromiseCatchesError() {
+    func testAsyncSealablePromiseCatchesError() {
         var errorThrown = false
-        _ = DispatchQueue.main.asyncPromise { (seal: Resolver<Int>) in
+        DispatchQueue.main.asyncPromise { (seal: Resolver<Int>) in
             seal.reject(TestError.anError)
             }.done { value in
                 XCTFail("Expected to fail")
-            }.catch { error in
+            }.catch { _ in
                 errorThrown = true
         }
         expect(errorThrown).toEventually(beTrue())
